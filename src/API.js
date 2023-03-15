@@ -11,5 +11,7 @@ export const getTrandingMovies = () => {
 return axios.get(`${baseURL}/3/trending/all/day?api_key=${API_KEY}`)
 }
 
-
+export const getAllMovies = () => {
+return axios.get(`${baseURL}`)
+}
 

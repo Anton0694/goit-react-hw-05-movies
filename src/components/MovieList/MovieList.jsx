@@ -6,7 +6,7 @@ export const MovieList = ({ movies }) => {
 
   return (
     <Container>
-      {console.log(movies)}
+      
       {movies.map((movie) => (
         <MovieWrapper key={movie.id}>
           <Link to={`${movie.id}`} state={{ from: location }}>

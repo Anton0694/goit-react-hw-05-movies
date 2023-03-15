@@ -1,4 +1,4 @@
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, Link, Outlet } from "react-router-dom";
 import { BackLink } from "../components/BackLink/BackLink";
 import { getMovieById } from "../API";
 
@@ -25,6 +25,12 @@ const MovieDetails = () => {
           praesentium ipsum quos unde voluptatum?
         </p>
       </div>
+      <h3>Aditional information</h3>
+      <ul>
+        <Link to="cast">Cast</Link>
+        <Link to="reviews">Reviews</Link>
+      </ul>
+      <Outlet />
     </main>
   );
 };
