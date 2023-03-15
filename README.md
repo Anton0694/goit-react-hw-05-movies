@@ -111,3 +111,22 @@ GitHub.
 3. Если все шаги прошли успешно, собранная продакшн версия файлов проекта
    отправляется в ветку `gh-pages`. В противном случае, в логе выполнения
    скрипта будет указано в чем проблема.
+
+
+## Маршрути
+  - /Layout
+    - /Home
+      - /Trending today
+      - MovieList
+    - /Movies
+      - MovieId
+        - Title
+        - Score
+        - Overview
+        - Genres
+      - Aditional Information
+        - /Cast
+           - Actor foto
+           - Actor name
+           - Character
+        - /Reviews
