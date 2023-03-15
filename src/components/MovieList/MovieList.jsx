@@ -1,4 +1,4 @@
-/* import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Container, MovieWrapper, MovieName } from "./MovieList.styled";
 
 export const MovieList = ({ movies }) => {
@@ -17,4 +17,4 @@ export const MovieList = ({ movies }) => {
       ))}
     </Container>
   );
-}; */
+};
