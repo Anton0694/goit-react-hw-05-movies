@@ -26,7 +26,7 @@ export const getTrandingMovies = async () => {
 export const getMovieName = async query => {
     try {
         const response = await axios.get(
-            `/search/movie?api_key=${API_KEY}&page=1&query=${query}`);
+            `/search/movie?api_key=${API_KEY}&query=${query}&page=1`);
         return response;
     } catch (error) {
         console.log(error.message);
