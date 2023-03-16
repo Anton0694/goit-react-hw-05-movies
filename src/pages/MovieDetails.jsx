@@ -1,21 +1,26 @@
 import { useParams, useLocation, Link, Outlet } from "react-router-dom";
 import { BackLink } from "../components/BackLink/BackLink";
 import { getMovieById } from "../API";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const MovieDetails = () => {
-  const { movieId } = useParams();
   
-const id = movieId.split('').splice(1, movieId.length).join('')
+  const { movieId } = useParams();
+ const [responseData, setResponseData] = useState()  
+
 
   useEffect(() => {
-    getMovieById(id).then(data => console.log(data.data))
-    
-  }, [id])
+ 
+    const fetchData = async () => {
+      const responseData = await getMovieById(movieId)
+      setResponseData(responseData.data);
+    }
+fetchData()
+  }, [movieId])
 
+  console.log(responseData)
 
-
-  /* const location = useLocation();
+/*   const location = useLocation();
   const backLinkHref = location.state?.from ?? "/movies"; */
 
   return (
@@ -23,17 +28,18 @@ const id = movieId.split('').splice(1, movieId.length).join('')
       {/* <BackLink to={backLinkHref}>Back to movies</BackLink> */}
      
       <div>
+        <div>
+          <img src="" alt="" />
+        </div>
+        <div>
         <h2>
-        {/*   Movie - {movie.title} */}
+         {/*  Movie - {responseData.title} */}
         </h2>
         <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus
-          sunt excepturi nesciunt iusto dignissimos assumenda ab quae cupiditate
-          a, sed reprehenderit? Deleniti optio quasi, amet natus reiciendis
-          atque fuga dolore? Lorem, ipsum dolor sit amet consectetur adipisicing
-          elit. Impedit suscipit quisquam incidunt commodi fugiat aliquam
-          praesentium ipsum quos unde voluptatum?
-        </p>
+         
+          </p>
+          </div>
       </div>
     {/*   <h3>Aditional information</h3>
       <ul>
