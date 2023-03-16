@@ -3,12 +3,13 @@ import { BackLink } from "../../components/BackLink/BackLink";
 import { getMovieById } from "../../API";
 import { useEffect, useState } from "react";
 import { BASE_IMG_URL } from "../../API";
-import {AditInfo, MovieContainer, MovieImgBox, MovieInfoBox} from "./MovieDetails.styled"
+import {AditInfo, MovieContainer, MovieImgBox} from "./MovieDetails.styled"
 
 const MovieDetails = () => {
   const location = useLocation();
   const { movieId } = useParams();
- const [responseData, setResponseData] = useState(null)  
+  const [responseData, setResponseData] = useState(null)  
+  
 
 
   useEffect(() => {
@@ -17,17 +18,18 @@ const MovieDetails = () => {
       const responseData = await getMovieById(movieId)
       setResponseData(responseData.data);
     }
-fetchData()
+    fetchData()
   }, [movieId])
 
   if (responseData === null) {
     return
   }
-  console.log(responseData)
-
   
   const backLinkHref = location.state?.from ?? "/movies";
   const getGenresString = responseData.genres.map(genre => genre.name).join(' ');
+  const getDateYear = responseData.release_date.slice(0,4);
+  const userScore = Math.round(responseData.vote_average) * 10
+ 
   return (
     <main>
       <BackLink to={backLinkHref}>Back to movies</BackLink>
@@ -36,10 +38,11 @@ fetchData()
         <MovieImgBox>
           <img src={`${BASE_IMG_URL}${responseData.poster_path}`} alt="" />
         </MovieImgBox>
-        <MovieInfoBox>
+        <div>
           <h2>
-          {responseData.title}
+          {responseData.title} ({getDateYear})
           </h2>
+          <p>User score: {userScore}%</p>
           <h3>Overview</h3>
           <p>
           {responseData.overview}
@@ -48,7 +51,7 @@ fetchData()
           <p>
             {getGenresString}
           </p>
-          </MovieInfoBox>
+          </div>
       </MovieContainer>
       <h3>Aditional information</h3>
       <AditInfo>

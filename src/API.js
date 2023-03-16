@@ -14,7 +14,6 @@ export const getMovieById = async id => {
     }
 };
 
-
 export const getTrandingMovies = async () => {
      try {
         const response = await axios.get(
@@ -35,3 +34,20 @@ export const getMovieName = async query => {
     }
 };
 
+export const getMovieCast = async id => {
+    try {
+        const response = await axios.get(`movie/${id}/credits?api_key=${API_KEY}&language=en-US`)
+        return response;
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+export const getMovieReviews = async id => { 
+    try {
+        const response = await axios.get(`movie/${id}/reviews?api_key=${API_KEY}&language=en-US&page=1`)
+        return response;
+    } catch (error) {
+        console.log(error.message)
+    }
+}

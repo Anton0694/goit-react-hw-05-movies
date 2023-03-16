@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const AditInfo = styled.ul`
-display: inline-flex;
+display: flex;
 flex-direction: column;
 `
 
@@ -14,7 +14,5 @@ display: flex;
 padding-right: 20px;
 `
 
-export const MovieInfoBox = styled.div`
 
-`
 
