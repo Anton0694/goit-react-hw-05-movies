@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const API_KEY = '0c6df8fcb0cf1f0f5728a6c0564c7c5a'
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
-export const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500/'
+export const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w300/'
 
 export const getMovieById = async id => {
     try {

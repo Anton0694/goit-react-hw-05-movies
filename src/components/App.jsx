@@ -6,7 +6,7 @@ import {getTrandingMovies} from "../API"
 
 
 const Home = lazy(() => import("../pages/Home/Home"));
-const MovieDetails = lazy(() => import("../pages/MovieDetails"));
+const MovieDetails = lazy(() => import("../pages/MovieDetails/MovieDetails"));
 const Movies = lazy(() => import("../pages/Movies/Movies"));
 const Cast = lazy(() => import("./Cast/Cast"));
 const Reviews = lazy(() => import("./Reviews/Reviews"));
