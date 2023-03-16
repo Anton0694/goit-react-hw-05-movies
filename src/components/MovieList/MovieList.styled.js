@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link  } from "react-router-dom";
 
 export const Container = styled.div`
   display: grid;
@@ -21,3 +22,13 @@ export const MovieName = styled.h3`
   margin-bottom: 0;
   color: black;
 `;
+export const Links = styled(Link)`
+display: flex;
+text-decoration: none;
+color: black;
+font-size: 16px;
+margin-bottom: 4px;
+&:hover, :focus{
+    color: #aec492
+}
+`

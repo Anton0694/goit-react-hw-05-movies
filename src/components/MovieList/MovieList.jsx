@@ -1,20 +1,16 @@
-import { Link, useLocation } from "react-router-dom";
-import { Container, MovieWrapper, MovieName } from "./MovieList.styled";
+
+
+import {Links} from "./MovieList.styled"
 
 export const MovieList = ({ movies }) => {
-  const location = useLocation();
+  /* const location = useLocation(); */
 
   return (
-    <Container>
+   <ul>
+        {movies.map((film) => <Links to={`/movies/:${film.id}`} key={film.id}>{film.title ?? film.name}        
+        </Links>)}
+     </ul>
       
-      {movies.map((movie) => (
-        <MovieWrapper key={movie.id}>
-          <Link to={`${movie.id}`} state={{ from: location }}>
-            
-            <MovieName>{movie.name}</MovieName>
-          </Link>
-        </MovieWrapper>
-      ))}
-    </Container>
+      
   );
 };

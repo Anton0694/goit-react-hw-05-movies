@@ -1,15 +1,13 @@
-import { Links, Title } from "./Home.styled";
+import { Title } from "./Home.styled";
+import { MovieList } from "components/MovieList/MovieList";
 
 const Home = ({trendsFilm}) => {
-  console.log(trendsFilm)
+
   return (
     
     <main>
       <Title>Trending today</Title>
-      <ul>
-        {trendsFilm.map((film) => <Links to={`/movies/:${film.id}`} key={film.id}>{film.title ?? film.name}        
-        </Links>)}
-     </ul>
+      <MovieList movies={trendsFilm} />
     </main> 
   );
 };
