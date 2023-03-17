@@ -1,25 +1,49 @@
-const Team = () => {
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getMovieCast, BASE_IMG_URL } from "../../API";
+
+
+
+const Cast = () => {
+const { movieId } = useParams();
+  const [castData, setCastData] = useState(null)
+  
+
+  useEffect(() => {
+  
+    const fetchData = async () => {
+   
+      const castData = await getMovieCast(movieId)
+      setCastData(castData.data);
+    }
+    fetchData()
+  }, [movieId])
+
+  
+ 
+if (castData === null) {
+    return
+  }
+
+const castPosterItem = castData.cast.map(cast => cast.profile_path)
+  console.log(castPosterItem)
   return (
-    <section>
+    <div>
       <ul>
         <li>
-          <b>CEO</b> - Gabrijela Vohu Manah
+      <img src={`{BASE_IMG_URL}${castPosterItem}`} alt="" />
         </li>
-        <li>
-          <b>Sales</b> - Darius Marianne
-        </li>
-        <li>
-          <b>Product</b> - Ségdae Jean-Pierre
-        </li>
-        <li>
-          <b>Marketing</b> - Melina Theotimos
-        </li>
-        <li>
-          <b>Engineering</b> - Gregor Ramadhani
-        </li>
-      </ul>
-    </section>
+   </ul>
+      
+          
+       {/*    <p>{responseData.title}</p> 
+          
+          
+          <p>Characters: {responseData.overview}</p>  */}
+          
+          </div>
+     
   );
 };
 
-export default Team;
+export default Cast;
