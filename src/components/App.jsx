@@ -12,21 +12,23 @@ const Cast = lazy(() => import("./Cast/Cast"));
 const Reviews = lazy(() => import("./Reviews/Reviews"));
 
 export const App = () => {
-const [trendsFilm, setTrendsFilms] = useState([])
+  const [trendsFilm, setTrendsFilms] = useState([])
 
-useEffect(() => {
-  getTrandingMovies().then(({data}) => setTrendsFilms(data.results))
+  useEffect(() => {
+    getTrandingMovies().then(({ data }) => setTrendsFilms(data.results))
   }, [])
 
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
-        <Route index element={<Home trendsFilm={trendsFilm}/>} />
+        <Route index element={<Home trendsFilm={trendsFilm} />} />
         <Route path="movies" element={<Movies />} />
-          <Route path="movies/:movieId" element={<MovieDetails />} />
-          <Route path="/movies/:movieId/cast" element={<Cast />} />
-          <Route path="/movies/:movieId/reviews" element={<Reviews />} />
+        <Route path="movies/:movieId" element={<MovieDetails />} >
+          <Route path="cast" element={<Cast />} />
+          <Route path="reviews" element={<Reviews />} />
         </Route>
+      </Route>
+      
     </Routes>
   );
 };

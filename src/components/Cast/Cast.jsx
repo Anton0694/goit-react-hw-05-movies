@@ -20,29 +20,25 @@ const { movieId } = useParams();
   }, [movieId])
 
   
- 
+
 if (castData === null) {
     return
-  }
+  } 
 
-const castPosterItem = castData.cast.map(cast => cast.profile_path)
-  console.log(castPosterItem)
+  
   return (
-    <div>
+    
       <ul>
-        <li>
-      <img src={`{BASE_IMG_URL}${castPosterItem}`} alt="" />
-        </li>
+
+        {castData.cast.map(({ name, profile_path, character, id }) => (
+          <li key={id}>
+          {profile_path && (<img src={`${BASE_IMG_URL}${profile_path}`} alt="Actor Foto" />)}
+               <p>{name}</p>
+          <p>Characters: {character}</p> 
+        </li>))}
+        
    </ul>
-      
           
-       {/*    <p>{responseData.title}</p> 
-          
-          
-          <p>Characters: {responseData.overview}</p>  */}
-          
-          </div>
-     
   );
 };
 

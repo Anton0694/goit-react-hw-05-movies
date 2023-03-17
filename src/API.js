@@ -39,11 +39,11 @@ export const getMovieCast = async id => {
         const response = await axios.get(`movie/${id}/credits?api_key=${API_KEY}&language=en-US`)
         return response;
     } catch (error) {
-        console.log(error.message)
+        return
     }
 }
 
-export const getMovieReviews = async id => { 
+export const getMovieReviews = async id => {
     try {
         const response = await axios.get(`movie/${id}/reviews?api_key=${API_KEY}&language=en-US&page=1`)
         return response;
