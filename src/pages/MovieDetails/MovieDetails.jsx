@@ -1,7 +1,7 @@
 import { useParams, useLocation, Link, Outlet } from "react-router-dom";
 import { BackLink } from "../../components/BackLink/BackLink";
 import { getMovieById, BASE_IMG_URL } from "../../API";
-import { useEffect, useState, Suspense } from "react";
+import { useEffect, useState} from "react";
 import {AditInfo, MovieContainer, MovieImgBox} from "./MovieDetails.styled"
 
 const MovieDetails = () => {

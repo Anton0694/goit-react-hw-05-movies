@@ -21,8 +21,6 @@ const Reviews = () => {
     return
   } 
 
- 
-  console.log(reviewsData )
   return (
     <ul>
        {reviewsData.results.length === 0 && (<p>"We don't have any reviews for this movie"</p>) }
