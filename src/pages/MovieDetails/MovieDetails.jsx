@@ -1,7 +1,7 @@
 import { useParams, useLocation, Link, Outlet } from "react-router-dom";
 import { BackLink } from "../../components/BackLink/BackLink";
 import { getMovieById, BASE_IMG_URL } from "../../API";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import {AditInfo, MovieContainer, MovieImgBox} from "./MovieDetails.styled"
 
 const MovieDetails = () => {
@@ -52,11 +52,12 @@ const MovieDetails = () => {
           </p>
           </div>
       </MovieContainer>
-      <h3>Aditional information</h3>
       <AditInfo>
+        <h3>Aditional information</h3>
         <Link to="cast">Cast</Link>
         <Link to="reviews">Reviews</Link>
       </AditInfo>
+      
       <Outlet />
     </main>
   );

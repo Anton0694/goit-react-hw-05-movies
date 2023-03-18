@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
-import { lazy } from "react";
-import { Route, Routes } from "react-router-dom";
+import { useEffect, useState, Suspense, lazy} from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { SharedLayout } from "./SharedLayout/SharedLayout";
 import {getTrandingMovies} from "../API"
 
@@ -19,7 +18,9 @@ export const App = () => {
   }, [])
 
   return (
+    <Suspense fallback={<div>Loading page...</div>}>
     <Routes>
+      
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<Home trendsFilm={trendsFilm} />} />
         <Route path="movies" element={<Movies />} />
@@ -28,7 +29,8 @@ export const App = () => {
           <Route path="reviews" element={<Reviews />} />
         </Route>
       </Route>
-      
-    </Routes>
+      <Route path="*" element={<Navigate to="/" />}/>
+      </Routes>
+      </Suspense>
   );
 };

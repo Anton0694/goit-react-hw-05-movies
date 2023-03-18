@@ -29,14 +29,12 @@ if (castData === null) {
   return (
     
       <ul>
-
         {castData.cast.map(({ name, profile_path, character, id }) => (
           <li key={id}>
           {profile_path && (<img src={`${BASE_IMG_URL}${profile_path}`} alt="Actor Foto" />)}
                <p>{name}</p>
           <p>Characters: {character}</p> 
         </li>))}
-        
    </ul>
           
   );
