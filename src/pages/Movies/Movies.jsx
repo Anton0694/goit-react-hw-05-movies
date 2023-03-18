@@ -1,6 +1,5 @@
 import { useSearchParams } from "react-router-dom";
 import { MovieList } from "../../components/MovieList/MovieList"
-/* import { SearchBox } from "../../components/SearchBox/SearchBox"; */
 import { getMovieName } from "../../API";
 import { useEffect, useState } from "react";
 import { Wrapper, SearchFormBtn, Icon, Form, SearchFormInput } from "../../pages/Movies/Movies.styled";
@@ -16,6 +15,7 @@ const Movies = () => {
     event.preventDefault();
     
     setSearchParams(value === "" ? {} : { name: value })
+    event.target.name.value = "";
   };
 
   useEffect(() => {
