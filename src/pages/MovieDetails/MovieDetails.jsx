@@ -24,7 +24,7 @@ const MovieDetails = () => {
     return
   }
   
-  const backLinkHref = location.state?.from ?? "/movies";
+  const backLinkHref = location?.state?.from ?? "/movies";
   const getGenresString = responseData.genres.map(genre => genre.name).join(' ');
   const getDateYear = responseData.release_date.slice(0,4);
   const userScore = Math.round(responseData.vote_average) * 10
@@ -54,8 +54,8 @@ const MovieDetails = () => {
       </MovieContainer>
       <AditInfo>
         <h3>Aditional information</h3>
-        <Link to="cast">Cast</Link>
-        <Link to="reviews">Reviews</Link>
+        <Link to="cast" state={{from:location?.state?.from }}>Cast</Link>
+        <Link to="reviews" state={{from:location?.state?.from }}>Reviews</Link>
       </AditInfo>
       
       <Outlet />
@@ -64,3 +64,7 @@ const MovieDetails = () => {
 };
 
 export default MovieDetails;
+
+
+
+
